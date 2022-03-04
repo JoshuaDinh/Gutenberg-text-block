@@ -34,51 +34,27 @@ function Edit(_ref) {
     setAttributes
   } = _ref;
   const {
-    text
+    text,
+    alignment
   } = attributes;
-  console.log(attributes);
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.BlockControls, {
-    group: "inline"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, "Inline Controls")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.BlockControls, {
-    group: "block"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, "Block Controls")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.BlockControls, {
-    controls: [{
-      title: "Button 1",
-      icon: "admin-generic",
-      isActive: true,
-      onClick: () => console.log("Button 1 clicked")
-    }, {
-      title: "Button 2",
-      icon: "admin-comments",
-      isActive: false,
-      onClick: () => console.log("Button 2 clicked")
-    }]
-  }, text && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToolbarGroup, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToolbarButton, {
-    title: "Align Left",
-    icon: "editor-alignleft",
-    onClick: () => console.log("Align Left")
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToolbarButton, {
-    title: "Align Center",
-    icon: "editor-aligncenter",
-    onClick: () => console.log("Align Center")
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToolbarButton, {
-    title: "Align Right",
-    icon: "editor-alignright",
-    onClick: () => console.log("Align Right")
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToolbarDropdownMenu, {
-    icon: "arrow-down-alt2",
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("More Alignments", "text-box"),
-    controls: [{
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Wide", "text-box"),
-      icon: "align-wide"
-    }, {
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Full", "text-box"),
-      icon: "align-full-width"
-    }]
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)(), {
-    onChange: value => setAttributes({
-      text: value
-    }),
+
+  const onChangeText = newText => {
+    setAttributes({
+      text: newText
+    });
+  };
+
+  const onChangeAlignment = newAlignment => {
+    setAttributes({
+      alignment: newAlignment
+    });
+  };
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.BlockControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.AlignmentToolbar, {
+    value: alignment,
+    onChange: onChangeAlignment
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)(), {
+    onChange: onChangeText,
     value: text,
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Your Text..", "text-box") //tagName assigns element type
     ,
@@ -86,7 +62,95 @@ function Edit(_ref) {
     ,
     allowedFormats: ["core/bold"]
   })));
-}
+} // import { __ } from "@wordpress/i18n";
+// import {
+//   useBlockProps,
+//   RichText,
+//   BlockControls,
+// } from "@wordpress/block-editor";
+// import {
+//   ToolbarGroup,
+//   ToolbarButton,
+//   ToolbarDropdownMenu,
+// } from "@wordpress/components";
+// import "./editor.scss";
+// export default function Edit({ attributes, setAttributes }) {
+//   const { text } = attributes;
+//   console.log(attributes);
+//   return (
+//     <>
+//       <BlockControls group="inline">
+//         <p>Inline Controls</p>
+//       </BlockControls>
+//       <BlockControls group="block">
+//         <p>Block Controls</p>
+//       </BlockControls>
+//       <BlockControls
+//         controls={[
+//           {
+//             title: "Button 1",
+//             icon: "admin-generic",
+//             isActive: true,
+//             onClick: () => console.log("Button 1 clicked"),
+//           },
+//           {
+//             title: "Button 2",
+//             icon: "admin-comments",
+//             isActive: false,
+//             onClick: () => console.log("Button 2 clicked"),
+//           },
+//         ]}
+//       >
+//         {/* Creates editing functionality for block within Wordpress */}
+//         {/* Conditional rendering of controls */}
+//         {text && (
+//           <ToolbarGroup>
+//             <ToolbarButton
+//               title="Align Left"
+//               icon="editor-alignleft"
+//               onClick={() => console.log("Align Left")}
+//             />
+//             <ToolbarButton
+//               title="Align Center"
+//               icon="editor-aligncenter"
+//               onClick={() => console.log("Align Center")}
+//             />
+//             <ToolbarButton
+//               title="Align Right"
+//               icon="editor-alignright"
+//               onClick={() => console.log("Align Right")}
+//             />
+//             <ToolbarDropdownMenu
+//               icon="arrow-down-alt2"
+//               label={__("More Alignments", "text-box")}
+//               controls={[
+//                 {
+//                   title: __("Wide", "text-box"),
+//                   icon: "align-wide",
+//                 },
+//                 {
+//                   title: __("Full", "text-box"),
+//                   icon: "align-full-width",
+//                 },
+//               ]}
+//             />
+//           </ToolbarGroup>
+//         )}
+//       </BlockControls>
+//       {/*RichText Component allows editing on block editor takes in attributes from RichText Component*/}
+//       <RichText
+//         {...useBlockProps()}
+//         onChange={(value) => setAttributes({ text: value })}
+//         value={text}
+//         placeholder={__("Your Text..", "text-box")}
+//         //tagName assigns element type
+//         tagName="h4"
+//         //Allows options for component
+//         allowedFormats={["core/bold"]}
+//       />
+//     </>
+//   );
+// }
 
 /***/ }),
 
