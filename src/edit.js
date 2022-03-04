@@ -4,6 +4,7 @@ import {
   RichText,
   BlockControls,
 } from "@wordpress/block-editor";
+import { ToolbarGroup, ToolbarButton } from "@wordpress/components";
 import "./editor.scss";
 
 export default function Edit({ attributes, setAttributes }) {
@@ -27,7 +28,25 @@ export default function Edit({ attributes, setAttributes }) {
             onClick: () => console.log("Button 2 clicked"),
           },
         ]}
-      />
+      >
+        <ToolbarGroup>
+          <ToolbarButton
+            title="Align Left"
+            icon="editor-alignleft"
+            onClick={() => console.log("Align Left")}
+          />
+          <ToolbarButton
+            title="Align Center"
+            icon="editor-aligncenter"
+            onClick={() => console.log("Align Center")}
+          />
+          <ToolbarButton
+            title="Align Right"
+            icon="editor-alignright"
+            onClick={() => console.log("Align Right")}
+          />
+        </ToolbarGroup>
+      </BlockControls>
       <RichText
         {...useBlockProps()}
         onChange={(value) => setAttributes({ text: value })}
