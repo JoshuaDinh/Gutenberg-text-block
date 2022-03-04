@@ -7,17 +7,21 @@ import {
 import {
   ToolbarGroup,
   ToolbarButton,
-  Dropdown,
-  DropdownMenu,
+  ToolbarDropdownMenu,
 } from "@wordpress/components";
 import "./editor.scss";
 
 export default function Edit({ attributes, setAttributes }) {
   const { text } = attributes;
   console.log(attributes);
-  // RichText Component allows editing on block editor
   return (
     <>
+      <BlockControls group="inline">
+        <p>Inline Controls</p>
+      </BlockControls>
+      <BlockControls group="block">
+        <p>Block Controls</p>
+      </BlockControls>
       <BlockControls
         controls={[
           {
@@ -34,6 +38,7 @@ export default function Edit({ attributes, setAttributes }) {
           },
         ]}
       >
+        {/* Creates editing functionality for block within Wordpress */}
         <ToolbarGroup>
           <ToolbarButton
             title="Align Left"
@@ -50,7 +55,7 @@ export default function Edit({ attributes, setAttributes }) {
             icon="editor-alignright"
             onClick={() => console.log("Align Right")}
           />
-          <DropdownMenu
+          <ToolbarDropdownMenu
             icon="arrow-down-alt2"
             label={__("More Alignments", "text-box")}
             controls={[
@@ -66,6 +71,7 @@ export default function Edit({ attributes, setAttributes }) {
           />
         </ToolbarGroup>
       </BlockControls>
+      {/*RichText Component allows editing on block editor takes in attributes from RichText Component*/}
       <RichText
         {...useBlockProps()}
         onChange={(value) => setAttributes({ text: value })}
