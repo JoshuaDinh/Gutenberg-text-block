@@ -14,7 +14,9 @@
   "style": "file:./build/style-index.css",
   "attributes": {
     "text": {
-      "type": "string"
+      "type": "string",
+      "soures": "html",
+      "selector": "h4"
     }
   }
 }
