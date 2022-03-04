@@ -25,9 +25,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function Edit() {
-  // RichText Component allows editing on block editor
+function Edit(_ref) {
+  let {
+    attributes,
+    setAttributes
+  } = _ref;
+  console.log(attributes); // RichText Component allows editing on block editor
+
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)(), {
+    onChange: text => console.log(text),
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Your Text..", "text-box") //tagName assigns element type
     ,
     tagName: "h4" //Allows options for component
