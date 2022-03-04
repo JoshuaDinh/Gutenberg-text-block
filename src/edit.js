@@ -4,5 +4,14 @@ import "./editor.scss";
 
 export default function Edit() {
   // RichText Component allows editing on block editor
-  return <RichText {...useBlockProps()} />;
+  return (
+    <RichText
+      {...useBlockProps()}
+      placeholder={__("Your Text..", "text-box")}
+      //tagName assigns element type
+      tagName="h4"
+      //Allows options for component
+      allowedFormats={["core/bold"]}
+    />
+  );
 }
