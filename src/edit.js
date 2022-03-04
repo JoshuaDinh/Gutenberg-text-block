@@ -4,7 +4,12 @@ import {
   RichText,
   BlockControls,
 } from "@wordpress/block-editor";
-import { ToolbarGroup, ToolbarButton } from "@wordpress/components";
+import {
+  ToolbarGroup,
+  ToolbarButton,
+  Dropdown,
+  DropdownMenu,
+} from "@wordpress/components";
 import "./editor.scss";
 
 export default function Edit({ attributes, setAttributes }) {
@@ -44,6 +49,20 @@ export default function Edit({ attributes, setAttributes }) {
             title="Align Right"
             icon="editor-alignright"
             onClick={() => console.log("Align Right")}
+          />
+          <DropdownMenu
+            icon="arrow-down-alt2"
+            label={__("More Alignments", "text-box")}
+            controls={[
+              {
+                title: __("Wide", "text-box"),
+                icon: "align-wide",
+              },
+              {
+                title: __("Full", "text-box"),
+                icon: "align-full-width",
+              },
+            ]}
           />
         </ToolbarGroup>
       </BlockControls>

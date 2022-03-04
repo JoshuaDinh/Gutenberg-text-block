@@ -62,6 +62,16 @@ function Edit(_ref) {
     title: "Align Right",
     icon: "editor-alignright",
     onClick: () => console.log("Align Right")
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.DropdownMenu, {
+    icon: "arrow-down-alt2",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("More Alignments", "text-box"),
+    controls: [{
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Wide", "text-box"),
+      icon: "align-wide"
+    }, {
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Full", "text-box"),
+      icon: "align-full-width"
+    }]
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)(), {
     onChange: value => setAttributes({
       text: value
