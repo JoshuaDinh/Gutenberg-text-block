@@ -35,7 +35,19 @@ function Edit(_ref) {
   } = attributes;
   console.log(attributes); // RichText Component allows editing on block editor
 
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)(), {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.BlockControls, {
+    controls: [{
+      title: "Button 1",
+      icon: "admin-generic",
+      isActive: true,
+      onClick: () => console.log("Button 1 clicked")
+    }, {
+      title: "Button 2",
+      icon: "admin-comments",
+      isActive: false,
+      onClick: () => console.log("Button 2 clicked")
+    }]
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)(), {
     onChange: value => setAttributes({
       text: value
     }),
@@ -45,7 +57,7 @@ function Edit(_ref) {
     tagName: "h4" //Allows options for component
     ,
     allowedFormats: ["core/bold"]
-  }));
+  })));
 }
 
 /***/ }),

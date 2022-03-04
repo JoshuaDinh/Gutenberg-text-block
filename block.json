@@ -15,7 +15,7 @@
   "attributes": {
     "text": {
       "type": "string",
-      "soures": "html",
+      "source": "html",
       "selector": "h4"
     }
   }
