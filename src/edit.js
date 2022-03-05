@@ -21,14 +21,24 @@ import {
 import "./editor.scss";
 
 export default function Edit({ attributes, setAttributes }) {
-  const { text, alignment } = attributes;
+  const { text, alignment, backgroundColor } = attributes;
 
   const onChangeText = (newText) => {
     setAttributes({ text: newText });
   };
+
   const onChangeAlignment = (newAlignment) => {
     setAttributes({ alignment: newAlignment });
   };
+
+  const onBackgroundColorChange = (newBackgroundColor) => {
+    setAttributes({ backgroundColor: newBackgroundColor });
+  };
+
+  const onTextColorChange = (newTextColor) => {
+    setAttributes({ textColor: newTextColor });
+  };
+
   return (
     <>
       {/* Controls block styles & settings from editor */}
@@ -62,7 +72,8 @@ export default function Edit({ attributes, setAttributes }) {
               { name: "red", color: "#F00" },
               { name: "black", color: "#000" },
             ]}
-            onChange={(value) => console.log(value)}
+            value={backgroundColor}
+            onChange={onBackgroundColorChange}
           />
         </PanelBody>
       </InspectorControls>
@@ -72,7 +83,10 @@ export default function Edit({ attributes, setAttributes }) {
       </BlockControls>
       {/*RichText Component allows editing on block editor takes in attributes from RichText Component*/}
       <RichText
-        {...useBlockProps({ className: `text-box-align-${alignment}` })}
+        {...useBlockProps({
+          className: `text-box-align-${alignment}`,
+          style: { backgroundColor: backgroundColor },
+        })}
         onChange={onChangeText}
         value={text}
         placeholder={__("Your Text..", "text-box")}
@@ -80,7 +94,6 @@ export default function Edit({ attributes, setAttributes }) {
         tagName="h4"
         //Allows options for component
         allowedFormats={["core/bold"]}
-        // style={{ textAlign: alignment }}
       />
     </>
   );

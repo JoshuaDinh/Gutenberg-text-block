@@ -35,7 +35,8 @@ function Edit(_ref) {
   } = _ref;
   const {
     text,
-    alignment
+    alignment,
+    backgroundColor
   } = attributes;
 
   const onChangeText = newText => {
@@ -47,6 +48,18 @@ function Edit(_ref) {
   const onChangeAlignment = newAlignment => {
     setAttributes({
       alignment: newAlignment
+    });
+  };
+
+  const onBackgroundColorChange = newBackgroundColor => {
+    setAttributes({
+      backgroundColor: newBackgroundColor
+    });
+  };
+
+  const onTextColorChange = newTextColor => {
+    setAttributes({
+      textColor: newTextColor
     });
   };
 
@@ -79,12 +92,16 @@ function Edit(_ref) {
       name: "black",
       color: "#000"
     }],
-    onChange: value => console.log(value)
+    value: backgroundColor,
+    onChange: onBackgroundColorChange
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.BlockControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.AlignmentToolbar, {
     value: alignment,
     onChange: onChangeAlignment
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
-    className: `text-box-align-${alignment}`
+    className: `text-box-align-${alignment}`,
+    style: {
+      backgroundColor: backgroundColor
+    }
   }), {
     onChange: onChangeText,
     value: text,
@@ -92,8 +109,7 @@ function Edit(_ref) {
     ,
     tagName: "h4" //Allows options for component
     ,
-    allowedFormats: ["core/bold"] // style={{ textAlign: alignment }}
-
+    allowedFormats: ["core/bold"]
   })));
 } // import { __ } from "@wordpress/i18n";
 // import {
@@ -237,12 +253,16 @@ function save(_ref) {
   } = _ref;
   const {
     text,
-    alignment
+    alignment,
+    backgroundColor
   } = attributes;
   return (// RichText.Content enables component to display text without editing features
     // Takes in data from edit.js RichText component
     (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText.Content, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
-      className: `text-box-align-${alignment}`
+      className: `text-box-align-${alignment}`,
+      style: {
+        backgroundColor: backgroundColor
+      }
     }), {
       tagName: "h4",
       value: text
