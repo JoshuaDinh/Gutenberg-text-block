@@ -12,6 +12,11 @@ import {
   ToolbarDropdownMenu,
   PanelBody,
   TextControl,
+  TextareaControl,
+  ToggleControl,
+  AnglePickerControl,
+  ColorPicker,
+  ColorPalette,
 } from "@wordpress/components";
 import "./editor.scss";
 
@@ -26,6 +31,7 @@ export default function Edit({ attributes, setAttributes }) {
   };
   return (
     <>
+      {/* Controls block styles & settings from editor */}
       <InspectorControls>
         <PanelBody
           title={__("Color Settings", "text-box")}
@@ -37,6 +43,26 @@ export default function Edit({ attributes, setAttributes }) {
             value={text}
             onChange={onChangeText}
             help="help"
+          />
+          <TextareaControl
+            label="Text area Label"
+            value={text}
+            onChange={onChangeText}
+            help="help"
+          />
+          <ToggleControl
+            label="Toggle Label"
+            checked={true}
+            onChangeComplete={(value) => console.log(value)}
+          />
+          <AnglePickerControl />
+          <ColorPicker color={"#F03"} onChange={(v) => console.log(v)} />
+          <ColorPalette
+            colors={[
+              { name: "red", color: "#F00" },
+              { name: "black", color: "#000" },
+            ]}
+            onChange={(value) => console.log(value)}
           />
         </PanelBody>
       </InspectorControls>
