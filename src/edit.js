@@ -3,12 +3,15 @@ import {
   useBlockProps,
   RichText,
   BlockControls,
+  InspectorControls,
   AlignmentToolbar,
 } from "@wordpress/block-editor";
 import {
   ToolbarGroup,
   ToolbarButton,
   ToolbarDropdownMenu,
+  PanelBody,
+  TextControl,
 } from "@wordpress/components";
 import "./editor.scss";
 
@@ -23,6 +26,20 @@ export default function Edit({ attributes, setAttributes }) {
   };
   return (
     <>
+      <InspectorControls>
+        <PanelBody
+          title={__("Color Settings", "text-box")}
+          icon="admin-appearence"
+          initialOpen
+        >
+          <TextControl
+            label="Input Label"
+            value={text}
+            onChange={onChangeText}
+            help="help"
+          />
+        </PanelBody>
+      </InspectorControls>
       <BlockControls>
         {/* Value w/ onChangeAlignment control which alignment property is highlighted */}
         <AlignmentToolbar value={alignment} onChange={onChangeAlignment} />
