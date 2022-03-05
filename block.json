@@ -20,7 +20,9 @@
     },
     "alignment": {
       "type": "string",
-      "default": "left"
+      "default": "left",
+      "backgroundColor": "string",
+      "textColor": "string"
     }
   }
 }
