@@ -6,6 +6,7 @@ import {
   InspectorControls,
   AlignmentToolbar,
   PanelColorSettings,
+  ContrastChecker,
 } from "@wordpress/block-editor";
 import {
   ToolbarGroup,
@@ -61,7 +62,12 @@ export default function Edit({ attributes, setAttributes }) {
               label: __("Text Color", "text-box"),
             },
           ]}
-        ></PanelColorSettings>
+        >
+          <ContrastChecker
+            textColor={textColor}
+            backgroundColor={backgroundColor}
+          />
+        </PanelColorSettings>
         <PanelBody
           title={__("Settings", "text-box")}
           icon="admin-appearence"
