@@ -29,7 +29,7 @@ export default function Edit({ attributes, setAttributes }) {
       </BlockControls>
       {/*RichText Component allows editing on block editor takes in attributes from RichText Component*/}
       <RichText
-        {...useBlockProps()}
+        {...useBlockProps({ className: `text-box-align-${alignment}` })}
         onChange={onChangeText}
         value={text}
         placeholder={__("Your Text..", "text-box")}
@@ -37,6 +37,7 @@ export default function Edit({ attributes, setAttributes }) {
         tagName="h4"
         //Allows options for component
         allowedFormats={["core/bold"]}
+        // style={{ textAlign: alignment }}
       />
     </>
   );

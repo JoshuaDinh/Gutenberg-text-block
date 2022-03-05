@@ -2,10 +2,14 @@ import { __ } from "@wordpress/i18n";
 import { useBlockProps, RichText } from "@wordpress/block-editor";
 
 export default function save({ attributes }) {
-  const { text } = attributes;
+  const { text, alignment } = attributes;
   return (
     // RichText.Content enables component to display text without editing features
     // Takes in data from edit.js RichText component
-    <RichText.Content {...useBlockProps.save()} tagName="h4" value={text} />
+    <RichText.Content
+      {...useBlockProps.save({ className: `text-box-align-${alignment}` })}
+      tagName="h4"
+      value={text}
+    />
   );
 }
