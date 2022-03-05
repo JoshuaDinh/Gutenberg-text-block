@@ -5,6 +5,7 @@ import {
   BlockControls,
   InspectorControls,
   AlignmentToolbar,
+  PanelColorSettings,
 } from "@wordpress/block-editor";
 import {
   ToolbarGroup,
@@ -21,7 +22,7 @@ import {
 import "./editor.scss";
 
 export default function Edit({ attributes, setAttributes }) {
-  const { text, alignment, backgroundColor } = attributes;
+  const { text, alignment, backgroundColor, textColor } = attributes;
 
   const onChangeText = (newText) => {
     setAttributes({ text: newText });
@@ -43,8 +44,26 @@ export default function Edit({ attributes, setAttributes }) {
     <>
       {/* Controls block styles & settings from editor */}
       <InspectorControls>
-        <PanelBody
+        <PanelColorSettings
           title={__("Color Settings", "text-box")}
+          icon="admin-appearence"
+          initialOpen
+          disableCustomColors={false}
+          colorSettings={[
+            {
+              value: backgroundColor,
+              onChange: onBackgroundColorChange,
+              label: __("Background Color", "text-box"),
+            },
+            {
+              value: textColor,
+              onChange: onTextColorChange,
+              label: __("Text Color", "text-box"),
+            },
+          ]}
+        ></PanelColorSettings>
+        <PanelBody
+          title={__("Settings", "text-box")}
           icon="admin-appearence"
           initialOpen
         >
@@ -85,7 +104,7 @@ export default function Edit({ attributes, setAttributes }) {
       <RichText
         {...useBlockProps({
           className: `text-box-align-${alignment}`,
-          style: { backgroundColor: backgroundColor },
+          style: { backgroundColor: backgroundColor, color: textColor },
         })}
         onChange={onChangeText}
         value={text}
